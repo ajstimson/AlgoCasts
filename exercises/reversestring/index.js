@@ -7,13 +7,20 @@
 //   reverse('Greetings!') === '!sgniteerG'
 
 function reverse(str) {
+    return str.split("").reduce((acc, char) => char + acc)
+}
+
+module.exports = reverse
+
+/* 
+    !First Attempt
+    function reverse(str) {
     let reverseStr = ""
-    // get length of string and start a for loop
+    
     for (let i = str.length; i > -1; i--) {
         const lastLetter = str.charAt(i)
         reverseStr += lastLetter
     }
-    return reverseStr
-}
-
-module.exports = reverse
+        return reverseStr
+    }
+*/
