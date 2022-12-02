@@ -12,7 +12,6 @@ function chunk(array, size) {
     const result = []
     //calculate # of chunks
     const numberOfChunks = Math.round(array.length / size)
-    console.log(array, size, numberOfChunks)
     let start = 0
     let end = size
     for (let i = 0; i < numberOfChunks; i++) {

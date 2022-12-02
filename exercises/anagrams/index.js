@@ -8,6 +8,39 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+function anagrams(stringA, stringB) {
+    const stringAMap = createCharacterMap(formatString(stringA))
+    const stringBMap = createCharacterMap(formatString(stringB))
+    let match = false
 
-module.exports = anagrams;
+    //only run loop if both maps have same length
+    if (
+        Object.entries(stringAMap).length === Object.entries(stringBMap).length
+    ) {
+        //loop through first map
+        for (let char in stringAMap) {
+            //Check if stringBMap has same character & same # of occurrences
+            if (char in stringBMap && stringAMap[char] === stringBMap[char]) {
+                match = true
+            } else {
+                //exit loop if false
+                return false
+            }
+        }
+    }
+    return match
+}
+
+const formatString = (str) => {
+    return str.replace(/[^\w]/g, "").toLowerCase()
+}
+
+const createCharacterMap = (str) => {
+    const map = {}
+    for (let char of str) {
+        map[char] = map[char]++ || 1
+    }
+    return map
+}
+
+module.exports = anagrams
