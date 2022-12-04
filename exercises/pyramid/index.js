@@ -14,6 +14,13 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    for (let i = 0; i < n; i++) {
+        //we know that the final pyramid will have 2n+1 blocks so the air should be 2n-1/2-i
+        const air = " ".repeat((2 * n - 1) / 2 - i)
+        const blocks = "#".repeat(i < 1 ? 1 : 2 * i + 1)
+        console.log(air + blocks + air)
+    }
+}
 
-module.exports = pyramid;
+module.exports = pyramid
