@@ -16,14 +16,6 @@
 //     [10,  9,  8, 7]]
 
 function matrix(n) {
-    //create an array of arrays
-    //create n # of arrays
-    //create Counter
-    //create a startRow = 0, endRow = n-1
-    //create a startCol = 0, endCol = n-1
-    //create a for loop ending @ i <= n*n
-    //if i < n , increment startRow and set row[i] === counter
-
     const matrix = generateArray(n).map(() => generateArray(n))
 
     /*
