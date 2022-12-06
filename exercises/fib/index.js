@@ -13,7 +13,6 @@ function fib(n) {
     for (let i = 0; i <= n; i++) {
         arr[i] = i < 2 ? i : arr[i - 1] + arr[i - 2]
     }
-    console.log(n, arr)
     return arr[arr.length - 1]
 }
 
