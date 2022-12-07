@@ -5,17 +5,22 @@
 // removing it.
 
 class Queue {
-  constructor() {
-    this.data = [];
-  }
+    constructor() {
+        this.data = []
+    }
+    add(record) {
+        this.data.unshift(record)
+    }
 
-  add(record) {
-    this.data.unshift(record);
-  }
+    remove() {
+        console.log("remove", this.data)
+        return this.data.pop()
+    }
 
-  remove() {
-    return this.data.pop();
-  }
+    peek() {
+        console.log("peek", this.data)
+        return this.data[this.data.length - 1]
+    }
 }
 
-module.exports = Queue;
+module.exports = Queue
