@@ -47,6 +47,29 @@ class LinkedList {
     clear() {
         this.head = null
     }
+
+    removeFirst() {
+        this.head = this.head && this.head.next
+    }
+
+    removeLast() {
+        if (!this.head) return null
+        if (!this.head.next) {
+            this.head = null
+            return
+        }
+        let node = this.head.next
+        let previous = this.head
+
+        while (previous.next) {
+            if (!node.next) {
+                previous.next = null
+            } else {
+                previous = node
+                node = node.next
+            }
+        }
+    }
 }
 
 // const l = new LinkedList()
