@@ -70,12 +70,80 @@ class LinkedList {
             }
         }
     }
+
+    insertLast(data) {
+        const last = this.getLast()
+        if (!last) {
+            this.head = new Node(data)
+        } else {
+            last.next = new Node(data)
+        }
+    }
+
+    getAt(index) {
+        let node = this.head
+        let count = 0
+        while (node) {
+            if (count === index) {
+                return node
+            }
+
+            count++
+            node = node.next
+        }
+        return null
+    }
+
+    removeAt(index) {
+        let node = this.head
+        if (!node) return
+        let count = 0
+        while (node) {
+            if (index === 0) {
+                this.head = this.head.next
+            }
+            if (count === index) {
+                const previous = this.getAt(index - 1)
+                if (previous) {
+                    previous.next = node.next
+                }
+                return
+            }
+            count++
+            node = node.next
+        }
+    }
+
+    insertAt(data, index) {
+        if (!this.head) {
+            this.head = new Node(data)
+            return
+        }
+        if (index === 0) {
+            this.head = new Node(data, this.head)
+            return
+        }
+        const previous = this.getAt(index - 1)
+        if (previous) {
+            previous.next = new Node(data, previous.next)
+        } else {
+            //out of bounds
+            const last = this.getLast()
+            last.next = new Node(data, last.next)
+        }
+        // let count = 0
+        // let node = this.head
+        // while (node) {
+        //     if (index === count) {
+        //         const previous = this.getAt(index - 1)
+        //         previous.next = newNode
+        //         newNode.next = node
+        //     }
+        //     count++
+        // }
+    }
 }
 
-// const l = new LinkedList()
-// l.insertFirst(1)
-// l.insertFirst(2)
-// l.insertFirst(3)
-// l.insertFirst(4)
-// l.size()
+const l = new LinkedList()
+console.log(l.getAt(10))
 module.exports = { Node, LinkedList }
