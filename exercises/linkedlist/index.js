@@ -131,16 +131,25 @@ class LinkedList {
             const last = this.getLast()
             last.next = new Node(data, last.next)
         }
-        // let count = 0
-        // let node = this.head
-        // while (node) {
-        //     if (index === count) {
-        //         const previous = this.getAt(index - 1)
-        //         previous.next = newNode
-        //         newNode.next = node
-        //     }
-        //     count++
-        // }
+    }
+
+    forEach(fn) {
+        if (!this.head) return null
+        let node = this.head
+        let count = 0
+        while (node) {
+            fn(node, count)
+            node = node.next
+            count++
+        }
+    }
+
+    *[Symbol.iterator]() {
+        let node = this.head
+        while (node) {
+            yield node
+            node = node.next
+        }
     }
 }
 
