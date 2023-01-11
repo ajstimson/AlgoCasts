@@ -72,7 +72,7 @@ class LinkedList {
     }
 
     get(index) {
-        if (index < 1) return undefined
+        if (index < 1 || index <= this.length) return undefined
         if (index === 1) return this.head
         let node = this.head
         while (index) {
