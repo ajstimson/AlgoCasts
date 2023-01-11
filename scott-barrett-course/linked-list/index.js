@@ -70,4 +70,15 @@ class LinkedList {
         this.length--
         return item
     }
+
+    get(index) {
+        if (index < 1) return undefined
+        if (index === 1) return this.head
+        let node = this.head
+        while (index) {
+            node = node.next
+            index--
+        }
+        return node
+    }
 }
