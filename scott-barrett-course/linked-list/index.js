@@ -118,4 +118,22 @@ class LinkedList {
         this.length--
         return node
     }
+
+    reverse() {
+        const temp = this.head
+        this.head = this.tail
+        this.tail = temp
+
+        let index = this.length
+        let start = temp.next
+        let previous = null
+
+        while (index) {
+            next = temp.next
+            temp.next = previous
+            previous = temp
+            temp = next
+            index--
+        }
+    }
 }
