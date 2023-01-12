@@ -120,7 +120,7 @@ class LinkedList {
     }
 
     reverse() {
-        const temp = this.head
+        let temp = this.head
         this.head = this.tail
         this.tail = temp
 
@@ -135,5 +135,6 @@ class LinkedList {
             temp = next
             index--
         }
+        return this
     }
 }
