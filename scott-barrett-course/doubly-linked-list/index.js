@@ -75,4 +75,14 @@ class DoublyLinkedList {
         this.length--
         return node
     }
+
+    get(index) {
+        if (index > this.length || index < 0) return undefined
+        let node = this.head
+        while (index) {
+            node = node.next
+            index--
+        }
+        return node
+    }
 }
