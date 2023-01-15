@@ -77,12 +77,29 @@ class DoublyLinkedList {
     }
 
     get(index) {
-        if (index > this.length || index < 0) return undefined
+        if (index >= this.length || index < 0) return undefined
         let node = this.head
+        let dir = 0
+        if (index > this.length / 2) {
+            node = this.tail
+            dir = 1
+            index = this.length - index - 1
+        }
         while (index) {
-            node = node.next
+            console.log(node)
+            node = dir === 1 ? node.prev : node.next
             index--
         }
         return node
     }
 }
+
+let myDLL = new DoublyLinkedList(0)
+myDLL.push(1)
+myDLL.push(2)
+myDLL.push(3)
+myDLL.push(4)
+myDLL.push(5)
+myDLL.push(6)
+
+console.log(JSON.parse(JSON.stringify(myDLL.get(4).value)))
