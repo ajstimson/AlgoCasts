@@ -92,6 +92,33 @@ class DoublyLinkedList {
         }
         return node
     }
+
+    set(index, value) {
+        const temp = this.get(index)
+
+        if (temp) {
+            temp.value = value
+            return true
+        }
+        return false
+    }
+
+    insert(index, value) {
+        if (index < 0 || index > this.length) return false
+        if (index === 0) return this.unshift(value)
+        if (index === this.length) return this.push(value)
+
+        const node = new Node(value)
+        const before = this.get(index - 1)
+        const after = before.next
+
+        before.next = node
+        node.next = after
+        node.prev = before
+        after.prev = node
+        this.length++
+        return true
+    }
 }
 
 let myDLL = new DoublyLinkedList(0)
